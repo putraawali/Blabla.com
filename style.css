@@ -1,10 +1,14 @@
 /* wkwkwkwkwk */
-*{
+* {
     font-family: 'Poppins', sans-serif;
 }
 
 .bold-weight {
     font-weight: 600;
+}
+
+.product {
+    display: inline-block;
 }
 
 .card {
@@ -21,7 +25,7 @@
     text-align: center;
 }
 
-.checkout-constructor h3{
+.checkout-constructor h3 {
     text-align: center;
 }
 
