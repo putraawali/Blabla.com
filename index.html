@@ -32,10 +32,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#home" id="home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#checkout">Checkout</a>
+            <a class="nav-link" href="#checkout" >Checkout</a>
           </li>
           </li>
         </ul>
@@ -51,6 +51,29 @@
       </nav>
       <!-- akhir navbar -->
 
+
+<!-- Modal -->
+  <div class="modal-constructor">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Okey</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- cards -->
     <div id="listProduct">
         <!-- <div class="product">
@@ -59,6 +82,7 @@
             <div class="card-body">
               <h5 class="card-title">Cardigan pink</h5>
               <p class="card-text">Rp.100.000 </p>
+              <p> class="quantity">1</p>
               <a href="#" class="btn btn-primary">add to cart</a>
             </div>
           </div>
@@ -68,8 +92,8 @@
     <!-- form Checkout -->
     <div class="checkout-constructor">
       <h1 id="checkout">Checkout Barang</h1>
-      <h3> Rp.0</h3>
-      <form>
+        <div id='toAppend'> 
+      <!-- <form>
         <div class="form-row">
           <div class="col">
             <input type="text" class="form-control" placeholder="Barang">
@@ -82,17 +106,19 @@
           </div>
           <a href="#" class="btn btn-danger">Delete<a></a>
         </div>
-      </form>
-      <div class='btn-checkout-constructor'>
-        <a href="#" class="btn btn-success block-dis">Checkout<a>
+      </form> -->
+        </div>
+      <div class='btn-checkout-constructor' data-toggle="modal" data-target="#exampleModal">
+        <a href="#" class="btn btn-success block-dis" id="btn-checkout">Checkout<a>
       </div>
     </div>
 
 
- 
      <!-- Optional JavaScript -->
      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
      <script src="search.js"></script>
+     <script src="addToCart.js"></script>
+     <script src="checkout.js"></script>
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

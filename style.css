@@ -44,3 +44,15 @@
     margin-right: auto;
     width: 20%;
 }
+
+.quantity {
+    display: none; 
+}
+
+.total-harga {
+    color: red;
+}
+
+html {
+    scroll-behavior: smooth;
+}

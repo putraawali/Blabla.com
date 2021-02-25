@@ -1,12 +1,12 @@
 let products = [
-    {img: "img/1.jpg", name: "Cardigan pink", harga: "Rp 100.000"},
-    {img: "img/2.png", name: "Kemeja Strip merah", harga: "Rp 150.000"},
-    {img: "img/1.jfif", name: "Bomber Hitam Panda", harga: "Rp 120.000"},
-    {img: "img/3.jfif", name: "Sweater Coklat Biru", harga: "Rp 200.000"},
-    {img: "img/4.jpg", name: "Sneakers Hitam", harga: "Rp 400.000"},
-    {img: "img/5.jpg", name: "Sweater Abu NY", harga: "Rp 300.000"},
-    {img: "img/6.jfif", name: "Cardigan Merah Wanita", harga: "Rp 200.000"},
-    {img: "img/7.jpg", name: "Jaket Anak", harga: "Rp 50.000"},
+    {img: "img/1.jpg", name: "Cardigan pink", harga: "Rp 100.000", counter: 1},
+    {img: "img/2.png", name: "Kemeja Strip merah", harga: "Rp 150.000",counter: 1},
+    {img: "img/1.jfif", name: "Bomber Hitam Panda", harga: "Rp 120.000",counter: 1},
+    {img: "img/3.jfif", name: "Sweater Coklat Biru", harga: "Rp 200.000",counter: 1},
+    {img: "img/4.jpg", name: "Sneakers Hitam", harga: "Rp 400.000",counter: 1},
+    {img: "img/5.jpg", name: "Sweater Abu NY", harga: "Rp 300.000",counter: 1},
+    {img: "img/6.jfif", name: "Cardigan Merah Wanita", harga: "Rp 200.000",counter: 1},
+    {img: "img/7.jpg", name: "Jaket Anak", harga: "Rp 50.000",counter: 1},
 ]
 
 // akses produk
@@ -38,7 +38,7 @@ function search () {
     }
 }
 
-function render (list) {
+function render(list) {
     let listProduct = document.getElementById("listProduct")
     listProduct.innerHTML = ""
     for (let i = 0; i < list.length; i++) {
@@ -51,10 +51,12 @@ function render (list) {
           <div class="card-body">
             <h5 class="card-title">${list[i].name}</h5>
             <p class="card-text">${list[i].harga}</p>
-            <a href="#" class="btn btn-primary">add to cart</a>
+            <p class="quantity">${list[i].counter}</p>
+            <a href="#" onclick="addToCart()" class="btn btn-primary">add to cart</a>
           </div>`
         // masukin productnya kedalam product list di html
         listProduct.append(product)
     }
 }
+// pertama kali load render kepanggil
 render(products)
