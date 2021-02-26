@@ -19,7 +19,10 @@
  */
 
  let berapaKaliDiKlik = 0;
+//  untuk di function checkout (array harga doang)
  let priceArrayData = []
+//  untuk di function delete (array of obj)
+ let arrOfObjData = []
 
 function addToCart() {
     event.preventDefault();
@@ -41,23 +44,30 @@ function addToCart() {
         const inner = `
         <div class="form-row">
           <div class="col">
-            <input type="text" class="form-control" placeholder="${cardTitle}" disabled>
+            <input type="text" id="form-nama-barang" class="form-control" placeholder="${cardTitle}" value="${cardTitle}" disabled>
           </div>
           <div class="col">
             <input type="number" id="form-value" class="form-control" placeholder='1' min="1">
           </div>
           <div class="col">
-            <input type="text" class="form-control" placeholder="${cardText}" disabled>
+            <input type="text" id="form-harga" class="form-control" placeholder="${cardText}" value="${cardText}" disabled>
           </div>
-          <a href="#" class="btn btn-danger">Delete<a></a>
+          <a href="#" class="btn btn-danger" onclick="deleteForm()">Delete<a></a>
         </div>
       `
     
       form.innerHTML = inner
       toAppend.append(form)
       currentObj.counter ++
-      berapaKaliDiKlik ++
+        // untuk import data ke checkout 
       priceArrayData.push(cardText)
+       // untuk import data ke checkout 
+       arrOfObjData.push({
+           namaBarang: cardTitle,
+           harga: cardText
+       })
+      console.log(priceArrayData,'dari addToCart');
+      console.log(arrOfObjData,'dari add to Cart');
     }
 }
 // form => 1

@@ -83,6 +83,4 @@ function renderModal(joined) {
       </div>
     </div>
   </div> `
-
-
 }
