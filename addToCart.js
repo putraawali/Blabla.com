@@ -24,53 +24,61 @@
 //  untuk di function delete (array of obj)
  let arrOfObjData = []
 
+ let currentObj = {}
+
 function addToCart() {
     event.preventDefault();
     const divParent = event.target.parentNode
     const cardTitle = divParent.querySelector('.card-title').textContent
     const cardText = divParent.querySelector('.card-text').textContent
-    let currentObj = {}
-
+    currentObj = {}
+    // for ini untuk restriction
     for (const obj of products) {
         if(obj.name === cardTitle) {
-            currentObj = obj
+          currentObj = obj
         }
     }
-
+      
     if(currentObj.counter === 1) {
-        const toAppend = document.querySelector('#toAppend')
-        let form = document.createElement("form")
-        form.className = 'form-checkout'
-        const inner = `
-        <div class="form-row">
-          <div class="col">
-            <input type="text" id="form-nama-barang" class="form-control" placeholder="${cardTitle}" value="${cardTitle}" disabled>
+      const toAppend = document.querySelector('#toAppend')
+      let form = document.createElement("form")
+      form.className = 'form-checkout'
+      const inner = `
+      <div class="form-row">
+      <div class="col">
+          <input type="text" id="form-nama-barang" class="form-control" placeholder="${cardTitle}" value="${cardTitle}" disabled>
           </div>
           <div class="col">
-            <input type="number" id="form-value" class="form-control" placeholder='1' min="1">
+          <input type="number" id="form-value" class="form-control" placeholder='1' onkeyup="tambahKuantiti()" onchange="tambahKuantiti()" value="${currentObj.counter}" min="1">
           </div>
           <div class="col">
-            <input type="text" id="form-harga" class="form-control" placeholder="${cardText}" value="${cardText}" disabled>
+          <input type="text" id="form-harga" class="form-control" placeholder="${cardText}" value="${cardText}" disabled>
           </div>
           <a href="#" class="btn btn-danger" onclick="deleteForm()">Delete<a></a>
-        </div>
-      `
-    
+          </div>
+          `
+          
       form.innerHTML = inner
       toAppend.append(form)
       currentObj.counter ++
         // untuk import data ke checkout 
       priceArrayData.push(cardText)
-       // untuk import data ke checkout 
-       arrOfObjData.push({
-           namaBarang: cardTitle,
-           harga: cardText
-       })
-      console.log(priceArrayData,'dari addToCart');
+      // untuk import data ke checkout 
+      arrOfObjData.push({
+          namaBarang: cardTitle,
+          harga: cardText,
+          formValue: 0
+      })
+      
       console.log(arrOfObjData,'dari add to Cart');
     }
-}
-// form => 1
+  }
+  function tambahKuantiti() {
+    currentObj.counter++
+    console.log('tambah');
+  }
+
+  // form => 1
 // IDE UNTUK PERHITUNGAN DAN SPLIT SPLIT NAON LAH CONVERT
 // 1. setiap ada inputan di form itu akan dilisten eventnya pke 'keyUp'
 // 2. setiap event akan menjalankan beberapa fungsi berikut

@@ -7,6 +7,9 @@
 //  2.b fungsi calucalte untuk menghitung harga yang telah di split dg value dr form
 //  2.c fungsi join untuk menjoin hasil dari calculate dan covert jadi rupiah
 
+// form value
+// 
+
 // kita punya variabel berapakalidiklik akan menjalankan berapakali function rentetan dipanggil
 
 const buttonCheckout = document.querySelector('#btn-checkout')
@@ -14,20 +17,24 @@ buttonCheckout.addEventListener('click',checkout);
 
 function checkout() {
     event.preventDefault();
-    const formValue = +document.querySelector('#form-value').value
-    let total = 0
-    // kalo berbicara dengan data
-    // udah dapet priceArrayData
-    for (let i = 0; i < priceArrayData.length; i++) {
-        const masihRupiah = priceArrayData[i];
-        const split = splitRupiah(masihRupiah);
-        const calculated = calculate(split,formValue);
-
-        total += calculated        
+    if (arrOfObjData.length === 0) {
+      return renderModal('niat beli kagak bro?', 'kagak')
+    } else {
+      const formValue = document.querySelector('#form-value').value
+      let total = 0
+      // kalo berbicara dengan data
+      // udah dapet priceArrayData
+      for (let i = 0; i < arrOfObjData.length; i++) {
+          const masihRupiah = arrOfObjData[i].harga;
+          const split = splitRupiah(masihRupiah);
+          const calculated = calculate(split, formValue);
+  
+          total += calculated        
+      }
+      const joined = joinRupiah(total)
+      
+      renderModal(`Total pembelian anda sebesar <span class='total-harga'>${joined}</span> kapan mau bayar ?`, 'Ngutang dulu')
     }
-    const joined = joinRupiah(total)
-    
-    renderModal(joined)
 
 }
 
@@ -62,7 +69,7 @@ function calculate(number,formValue) {
     return number * formValue
 }
 
-function renderModal(joined) {
+function renderModal(joined, button) {
     const modalConstructor = document.querySelector(".modal-constructor")
     
     modalConstructor.innerHTML = `<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,10 +82,10 @@ function renderModal(joined) {
           </button>
         </div>
         <div class="modal-body">
-          Total pembelian anda sebesar <span class='total-harga'>${joined}</span> kapan mau bayar ?
+          ${joined}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Ngutang dulu</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">${button}</button>
         </div>
       </div>
     </div>
